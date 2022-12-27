@@ -7,7 +7,8 @@ import java.util.List;
 
 public class MonthlyReport {
 
-    ArrayList<DataByMonth> datasByMonths = new ArrayList<>();
+    public ArrayList<DataByMonth> datasByMonths = new ArrayList<>();
+
     public void loadFile(String path, int month) {
 
         List<String> lines = readFileContents(path, month);
@@ -30,10 +31,11 @@ public class MonthlyReport {
         try {
             return Files.readAllLines(Path.of(path));
         } catch (IOException e) {
-            // TODO: 27.12.2022 Разобраться как красиво впихнуть название месяца вместо цифры.
             System.out.println("Невозможно прочитать файл с месячным отчётом за месяц № " + month + ". " +
                     "Возможно файл не находится в нужной директории.");
             return Collections.emptyList();
         }
     }
+
+
 }
