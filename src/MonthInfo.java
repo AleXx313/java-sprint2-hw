@@ -8,10 +8,10 @@ public class MonthInfo {
         this.monthlyReport = monthlyReport;
     }
 
-    public int incomeByMonth(int month) {
+    public int getByMonthIncome(int month) {
         int sum = 0;
         HashMap<Integer, Integer> incomes = new HashMap<>();
-        for (DataByMonth data : monthlyReport.datasByMonths) {
+        for (DataByMonth data : monthlyReport.dataByMonths) {
             if (data.month != month || data.isExpense) {
                 continue;
             }
@@ -23,10 +23,10 @@ public class MonthInfo {
         return sum;
     }
 
-    public int consumptionByMonth(int month) {
+    public int getByMonthConsumption(int month) {
         int sum = 0;
         HashMap<Integer, Integer> consumptions = new HashMap<>();
-        for (DataByMonth data : monthlyReport.datasByMonths) {
+        for (DataByMonth data : monthlyReport.dataByMonths) {
             if (data.month != month || !data.isExpense) {
                 continue;
             }
@@ -42,7 +42,7 @@ public class MonthInfo {
         String mostValuableTitle = "";
         int mostIncome = 0;
         HashMap<Integer, Integer> incomes = new HashMap<>();
-        for (DataByMonth data : monthlyReport.datasByMonths) {
+        for (DataByMonth data : monthlyReport.dataByMonths) {
             if (data.month != month || data.isExpense) {
                 continue;
             }
@@ -62,7 +62,7 @@ public class MonthInfo {
         String mostExpenseTitle = "";
         int mostExpense = 0;
         HashMap<Integer, Integer> expenses = new HashMap<>();
-        for (DataByMonth data : monthlyReport.datasByMonths) {
+        for (DataByMonth data : monthlyReport.dataByMonths) {
             if (data.month != month || !data.isExpense) {
                 continue;
             }
@@ -96,9 +96,11 @@ public class MonthInfo {
         return monthName;
     }
 
-    public void getMonthInfo(int month){
-        System.out.println(getMonthName(month));
-        getMostValuableTitle(month);
-        getMostExpenseTitle(month);
+    public void getMonthInfo(){
+        for (int i = 1; i <= DataByMonth.numberOfMonthReports; i++) {
+            System.out.println(getMonthName(i));
+            getMostValuableTitle(i);
+            getMostExpenseTitle(i);
+        }
     }
 }

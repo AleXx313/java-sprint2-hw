@@ -8,7 +8,7 @@ import java.util.List;
 public class YearlyReport {
     public ArrayList<DataByYear> datasByYear = new ArrayList<>();
 
-    public YearlyReport(String path){
+    public YearlyReport(String path) {
         List<String> lines = readFileContents(path);
         String[] pathParts = path.split("\\.");
         int year = Integer.parseInt(pathParts[1]);

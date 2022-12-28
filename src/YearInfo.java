@@ -34,31 +34,27 @@ public class YearInfo {
 
     public int getAverageIncome(){
         int averageIncome = 0;
-        int monthsAmount = 3;
-        for (int i = 1; i <= monthsAmount; i++) {
+        for (int i = 1; i <= DataByMonth.numberOfMonthReports; i++) {
             averageIncome += getPerMonthIncome(i);
         }
-        return averageIncome / monthsAmount;
+        return averageIncome / DataByMonth.numberOfMonthReports;
     }
 
     public int getAverageConsumption(){
         int averageConsumption = 0;
-        int monthsAmount = 3;
-        for (int i = 1; i <= monthsAmount; i++) {
+        for (int i = 1; i <= DataByMonth.numberOfMonthReports; i++) {
             averageConsumption += getPerMonthConsumption(i);
         }
-        return averageConsumption / monthsAmount;
+        return averageConsumption / DataByMonth.numberOfMonthReports;
     }
 
     public void getYearInfo(){
 
         System.out.println("Год: " + yearlyReport.datasByYear.get(0).year);
-        for (int i = 1; i <= 3 ; i++) {
+        for (int i = 1; i <= DataByMonth.numberOfMonthReports ; i++) {
             System.out.println("Прибыль за " + MonthInfo.getMonthName(i) + " составила " + getMonthProfit(i) + ".");
         }
         System.out.println("Средний доход за всем месяцы составил " + getAverageIncome());
         System.out.println("Средний расход за всем месяцы составил " + getAverageConsumption());
-
     }
-
 }
