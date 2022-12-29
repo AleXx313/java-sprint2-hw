@@ -12,8 +12,8 @@ public class Main {
             if (command == 1) {
                 if (monthlyReport == null) {
                     monthlyReport = new MonthlyReport();
-                    for (int month = 1; month <= 12; month++) {
-                        String path = "java-sprint2-hw/resources/m.20210" + month + ".csv";
+                    for (int month = 1; month <= 3; month++) {
+                        String path = "resources/m.20210" + month + ".csv";
                         monthlyReport.loadFile(path, month);
                     }
                     System.out.println("------------------------------------------------");
@@ -23,7 +23,7 @@ public class Main {
                 }
             } else if (command == 2) {
                 if (yearlyReport == null) {
-                    yearlyReport = new YearlyReport("java-sprint2-hw/resources/y.2021.csv");
+                    yearlyReport = new YearlyReport("resources/y.2021.csv");
                     System.out.println("------------------------------------------------");
                 } else {
                     System.out.println("Годовой отчет уже был считан, введите другую команду.");
