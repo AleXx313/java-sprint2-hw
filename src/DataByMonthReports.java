@@ -1,5 +1,5 @@
 
-public class DataByMonth {
+public class DataByMonthReports {
     public String title;
     public boolean isExpense;
     public int quantity;
@@ -10,7 +10,7 @@ public class DataByMonth {
     public static int numberOfMonthReports;// статическая переменная, инкрементирующаяся каждый раз при прочтении месячного отчета.
 
 
-    public DataByMonth(String title, boolean isExpense, int quantity, int price, int month) {
+    public DataByMonthReports(String title, boolean isExpense, int quantity, int price, int month) {
         this.title = title;
         this.isExpense = isExpense;
         this.quantity = quantity;

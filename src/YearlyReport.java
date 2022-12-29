@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class YearlyReport {
-    public ArrayList<DataByYear> datasByYear = new ArrayList<>();
+    public ArrayList<DataByYearReports> dataByYearReports = new ArrayList<>();
 
     public YearlyReport(String path) {
         List<String> lines = readFileContents(path);
@@ -20,8 +20,8 @@ public class YearlyReport {
 
             boolean isExpense = Boolean.parseBoolean(parts[2]);
 
-            DataByYear dataByYear = new DataByYear(month, amount, isExpense, year);
-            datasByYear.add(dataByYear);
+            DataByYearReports dataByYearReports = new DataByYearReports(month, amount, isExpense, year);
+            this.dataByYearReports.add(dataByYearReports);
 
         }
         if (!lines.isEmpty()) {

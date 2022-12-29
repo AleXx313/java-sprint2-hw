@@ -7,7 +7,7 @@ import java.util.List;
 
 public class MonthlyReport {
 
-    public ArrayList<DataByMonth> dataByMonths = new ArrayList<>();
+    public ArrayList<DataByMonthReports> dataByMonthReports = new ArrayList<>();
 
     public void loadFile(String path, int month) {
 
@@ -20,12 +20,12 @@ public class MonthlyReport {
             int quantity = Integer.parseInt(parts[2]);
             int price = Integer.parseInt(parts[3]);
 
-            DataByMonth dataByMonth = new DataByMonth(title, isExpense, quantity, price, month);
-            dataByMonths.add(dataByMonth);
+            DataByMonthReports dataByMonthReports = new DataByMonthReports(title, isExpense, quantity, price, month);
+            this.dataByMonthReports.add(dataByMonthReports);
         }
         if (!lines.isEmpty()) {
             System.out.println("Отчет за месяц № " + month + " считан!");
-            DataByMonth.numberOfMonthReports++;//Подсчет прочитанных месячных отчетов.
+            DataByMonthReports.numberOfMonthReports++;//Подсчет прочитанных месячных отчетов.
         }
     }
     private List<String> readFileContents(String path, int month) {

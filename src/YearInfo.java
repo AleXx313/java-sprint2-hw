@@ -8,7 +8,7 @@ public class YearInfo {
 
     public int getPerMonthIncome(int month) {
         int monthIncome = 0;
-        for (DataByYear data : yearlyReport.datasByYear) {
+        for (DataByYearReports data : yearlyReport.dataByYearReports) {
             if (data.month == month &&!data.isExpense) {
                 monthIncome = data.amount;
             }
@@ -18,7 +18,7 @@ public class YearInfo {
 
     public int getPerMonthConsumption(int month) {
         int monthConsumption = 0;
-        for (DataByYear data : yearlyReport.datasByYear) {
+        for (DataByYearReports data : yearlyReport.dataByYearReports) {
             if (data.month == month && data.isExpense) {
                 monthConsumption = data.amount;
             }
@@ -32,24 +32,24 @@ public class YearInfo {
 
     public int getAverageIncome(){
         int averageIncome = 0;
-        for (int i = 1; i <= DataByMonth.numberOfMonthReports; i++) {
+        for (int i = 1; i <= DataByMonthReports.numberOfMonthReports; i++) {
             averageIncome += getPerMonthIncome(i);
         }
-        return averageIncome / DataByMonth.numberOfMonthReports;
+        return averageIncome / DataByMonthReports.numberOfMonthReports;
     }
 
     public int getAverageConsumption(){
         int averageConsumption = 0;
-        for (int i = 1; i <= DataByMonth.numberOfMonthReports; i++) {
+        for (int i = 1; i <= DataByMonthReports.numberOfMonthReports; i++) {
             averageConsumption += getPerMonthConsumption(i);
         }
-        return averageConsumption / DataByMonth.numberOfMonthReports;
+        return averageConsumption / DataByMonthReports.numberOfMonthReports;
     }
 
     public void getYearInfo(){
 
-        System.out.println("Год: " + yearlyReport.datasByYear.get(0).year);
-        for (int i = 1; i <= DataByMonth.numberOfMonthReports ; i++) {
+        System.out.println("Год: " + yearlyReport.dataByYearReports.get(0).year);
+        for (int i = 1; i <= DataByMonthReports.numberOfMonthReports ; i++) {
             System.out.println("Прибыль за " + MonthInfo.getMonthName(i) + " составила " + getMonthProfit(i) + ".");
         }
         System.out.println("Средний доход за всем месяцы составил " + getAverageIncome());

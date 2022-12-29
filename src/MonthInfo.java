@@ -11,7 +11,7 @@ public class MonthInfo {
     public int getByMonthIncome(int month) {
         int sum = 0;
         HashMap<Integer, Integer> incomes = new HashMap<>();
-        for (DataByMonth data : monthlyReport.dataByMonths) {
+        for (DataByMonthReports data : monthlyReport.dataByMonthReports) {
             if (data.month == month && !data.isExpense) {
                 incomes.put(month, data.totalTitleSum);
                 for (Integer income : incomes.values()) {
@@ -25,7 +25,7 @@ public class MonthInfo {
     public int getByMonthConsumption(int month) {
         int sum = 0;
         HashMap<Integer, Integer> consumptions = new HashMap<>();
-        for (DataByMonth data : monthlyReport.dataByMonths) {
+        for (DataByMonthReports data : monthlyReport.dataByMonthReports) {
             if (data.month == month && data.isExpense) {
                 consumptions.put(month, data.totalTitleSum);
                 for (Integer consumption : consumptions.values()) {
@@ -40,7 +40,7 @@ public class MonthInfo {
         String mostValuableTitle = "";
         int mostIncome = 0;
         HashMap<Integer, Integer> incomes = new HashMap<>();
-        for (DataByMonth data : monthlyReport.dataByMonths) {
+        for (DataByMonthReports data : monthlyReport.dataByMonthReports) {
             if (data.month == month && !data.isExpense) {
                 incomes.put(month, data.totalTitleSum);
                 for (Integer income : incomes.values()) {
@@ -59,7 +59,7 @@ public class MonthInfo {
         String mostExpenseTitle = "";
         int mostExpense = 0;
         HashMap<Integer, Integer> expenses = new HashMap<>();
-        for (DataByMonth data : monthlyReport.dataByMonths) {
+        for (DataByMonthReports data : monthlyReport.dataByMonthReports) {
             if (data.month == month && data.isExpense) {
                 expenses.put(month, data.totalTitleSum);
                 for (Integer expense : expenses.values()) {
@@ -94,18 +94,20 @@ public class MonthInfo {
 
     //Метод для получения общего количества считанных помесячных отчетов.
     //Данный метод - альтернатива статической переменной класса DataByMonth.numberOfMonthReports.
-    public int numberOfMonthReports() {
+    //monthlyReport.dataByMonths.size() - вернет не количество месяцев, а количество считанных строк из всех отчетов.
+    //Название листа dataByMonths сбивает с толку. Переименовал в dataByMonthReports. И заодно название класса.
+    public int getNumberOfMonthReports() {
         int numberOfMonthReports = 0;
-        for (DataByMonth dataByMonth : monthlyReport.dataByMonths) {
-            if (numberOfMonthReports != dataByMonth.month) {
-                numberOfMonthReports = dataByMonth.month;
+        for (DataByMonthReports dataByMonthReports : monthlyReport.dataByMonthReports) {
+            if (numberOfMonthReports != dataByMonthReports.month) {
+                numberOfMonthReports = dataByMonthReports.month;
             }
         }
         return numberOfMonthReports;
     }
 
     public void getMonthInfo() {
-        for (int i = 1; i <= numberOfMonthReports(); i++) {
+        for (int i = 1; i <= getNumberOfMonthReports(); i++) {
             System.out.println(getMonthName(i));
             getMostValuableTitle(i);
             getMostExpenseTitle(i);
