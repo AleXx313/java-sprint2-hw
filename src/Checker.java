@@ -7,16 +7,17 @@ public class Checker {
         this.yearInfo = yearInfo;
     }
 
-    public void check(){
+    public void check() {
         boolean flag = true;
-        for (int i = 1; i <=3 ; i++) {
-            if (monthInfo.getByMonthIncome(i) != yearInfo.getPerMonthIncome(i)){
+        for (int i = 1; i <= 3; i++) {
+            if (monthInfo.getByMonthIncome(i) != yearInfo.getPerMonthIncome(i) &&
+                    monthInfo.getByMonthConsumption(i) != yearInfo.getPerMonthConsumption(i)) {
                 System.out.println("По результатам проверки выявлено расхождение в месяце - " +
                         MonthInfo.getMonthName(i) + ".");
                 flag = false;
             }
         }
-        if (flag){
+        if (flag) {
             System.out.println("По результатам проверки расхождений не выявлено!");
         }
     }

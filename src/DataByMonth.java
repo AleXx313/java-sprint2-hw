@@ -7,7 +7,7 @@ public class DataByMonth {
     public int totalTitleSum;// общая сумма по наименованию quantity * price. Получается через конструктор.
     public int month;
 
-    public static int numberOfMonthReports;
+    public static int numberOfMonthReports;// статическая переменная, инкрементирующаяся каждый раз при прочтении месячного отчета.
 
 
     public DataByMonth(String title, boolean isExpense, int quantity, int price, int month) {

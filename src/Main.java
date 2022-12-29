@@ -10,9 +10,12 @@ public class Main {
         int command = scanner.nextInt();
         while (true) {
             if (command == 1) {
+                System.out.println("Сколько месячных отчетов у вас имеется?");
+                System.out.println("------------------------------------------------");
+                int monthCount= scanner.nextInt();
                 if (monthlyReport == null) {
                     monthlyReport = new MonthlyReport();
-                    for (int month = 1; month <= 3; month++) {
+                    for (int month = 1; month <= monthCount; month++) {
                         String path = "resources/m.20210" + month + ".csv";
                         monthlyReport.loadFile(path, month);
                     }

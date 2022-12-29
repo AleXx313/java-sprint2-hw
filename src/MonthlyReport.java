@@ -25,7 +25,7 @@ public class MonthlyReport {
         }
         if (!lines.isEmpty()) {
             System.out.println("Отчет за месяц № " + month + " считан!");
-            DataByMonth.numberOfMonthReports++;
+            DataByMonth.numberOfMonthReports++;//Подсчет прочитанных месячных отчетов.
         }
     }
     private List<String> readFileContents(String path, int month) {

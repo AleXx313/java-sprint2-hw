@@ -9,10 +9,9 @@ public class YearInfo {
     public int getPerMonthIncome(int month) {
         int monthIncome = 0;
         for (DataByYear data : yearlyReport.datasByYear) {
-            if (data.month != month || data.isExpense) {
-                continue;
+            if (data.month == month &&!data.isExpense) {
+                monthIncome = data.amount;
             }
-            monthIncome = data.amount;
         }
         return monthIncome;
     }
@@ -20,10 +19,9 @@ public class YearInfo {
     public int getPerMonthConsumption(int month) {
         int monthConsumption = 0;
         for (DataByYear data : yearlyReport.datasByYear) {
-            if (data.month != month || !data.isExpense) {
-                continue;
+            if (data.month == month && data.isExpense) {
+                monthConsumption = data.amount;
             }
-            monthConsumption = data.amount;
         }
         return monthConsumption;
     }

@@ -24,7 +24,10 @@ public class YearlyReport {
             datasByYear.add(dataByYear);
 
         }
-        System.out.println("Годовой отчет считан!");
+        if (!lines.isEmpty()) {
+            System.out.println("Годовой отчет считан!");
+        }
+
     }
 
     private List<String> readFileContents(String path) {
