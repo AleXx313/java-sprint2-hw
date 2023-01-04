@@ -12,12 +12,12 @@ public class Main {
             if (command == 1) {
                 System.out.println("Сколько месячных отчетов у вас имеется?");
                 System.out.println("------------------------------------------------");
-                int monthCount= scanner.nextInt();
+                int monthCount = scanner.nextInt();
                 if (monthlyReport == null) {
                     monthlyReport = new MonthlyReport();
-                    for (int month = 1; month <= monthCount; month++) {
-                        String path = "resources/m.20210" + month + ".csv";
-                        monthlyReport.loadFile(path, month);
+                    for (int i = 1; i <= monthCount; i++) {
+                        String path = "resources/m.20210" + i + ".csv";
+                        monthlyReport.loadFile(path, i);
                     }
                     System.out.println("------------------------------------------------");
                 } else {
@@ -39,7 +39,7 @@ public class Main {
 
                 } else {
                     MonthInfo monthInfo = new MonthInfo(monthlyReport);
-                    YearInfo yearInfo = new YearInfo(yearlyReport);
+                    YearInfo yearInfo = new YearInfo(yearlyReport, monthlyReport);
                     Checker checker = new Checker(monthInfo, yearInfo);
                     checker.check();
                     System.out.println("------------------------------------------------");
@@ -49,7 +49,7 @@ public class Main {
                 monthInfo.getMonthInfo();
                 System.out.println("------------------------------------------------");
             } else if (command == 5) {
-                YearInfo yearInfo = new YearInfo(yearlyReport);
+                YearInfo yearInfo = new YearInfo(yearlyReport, monthlyReport);
                 yearInfo.getYearInfo();
                 System.out.println("------------------------------------------------");
             } else if (command == 0) {
